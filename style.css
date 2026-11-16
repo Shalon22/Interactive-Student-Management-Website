@@ -1,0 +1,605 @@
+:root {
+  --bg-color: #f8f4ed;
+  --surface-color: #ffffff;
+  --text-main: #2f241e;
+  --text-muted: #74675f;
+  --primary-color: #5b3423;
+  --primary-hover: #452719;
+  --accent-color: #8ec5ff;
+  --border-color: #e5d9c5;
+  --success-text: #166534;
+  --success-bg: #dcfce7;
+  --danger-text: #991b1b;
+  --danger-bg: #fee2e2;
+  --info-text: #1e40af;
+  --info-bg: #dbeafe;
+  --warning-text: #92400e;
+  --warning-bg: #fef3c7;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(47, 36, 30, 0.08);
+  --transition: 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  color: var(--primary-color);
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 92%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem 0 3rem;
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 0.75rem;
+}
+
+/* =========================================
+   2. Header & Responsive Navigation
+   ========================================= */
+.site-header {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.logo span {
+  color: var(--accent-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #F2E8DA;
+  font-weight: 500;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: rgba(142, 197, 255, 0.2);
+  color: var(--accent-color);
+}
+
+.nav-links a.active {
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid rgba(242, 232, 218, 0.4);
+  color: #ffffff;
+  font-size: 1.5rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* =========================================
+   3. Hero & Page Banners
+   ========================================= */
+.hero, .page-banner {
+  background: linear-gradient(135deg, var(--primary-color), #21130c);
+  color: #ffffff;
+  padding: 3.5rem 0;
+  text-align: center;
+}
+
+.hero h1, .page-banner h1 {
+  color: #ffffff;
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero p, .page-banner p {
+  max-width: 650px;
+  margin: 0 auto 1.5rem;
+  color: #F2E8DA;
+  font-size: 1.05rem;
+}
+
+/* =========================================
+   4. Cards & Grid Layouts
+   ========================================= */
+.card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.stat-card {
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 0.35rem;
+}
+
+.text-success { color: var(--success-text); }
+.text-danger { color: var(--danger-text); }
+
+.summary-bar {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: #faf6f0;
+  border-color: var(--border-color);
+}
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.three-col-grid, .courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* =========================================
+   5. Forms & Buttons
+   ========================================= */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  font-size: 0.92rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background-color: #ffffff;
+  color: var(--text-main);
+  transition: var(--transition);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(142, 197, 255, 0.35);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: #e5d9c5;
+  color: var(--text-main);
+}
+
+.btn-secondary:hover {
+  background-color: #d3c4ad;
+}
+
+.btn-danger {
+  background-color: var(--danger-text);
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #7f1d1d;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.82rem;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.feedback-msg {
+  margin: 0.75rem 0;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.feedback-error {
+  color: var(--danger-text);
+  background-color: var(--danger-bg);
+  padding: 0.6rem 0.85rem;
+  border-radius: 6px;
+}
+
+.feedback-success {
+  color: var(--success-text);
+  background-color: var(--success-bg);
+  padding: 0.6rem 0.85rem;
+  border-radius: 6px;
+}
+
+/* =========================================
+   6. Student Records Table & Controls
+   ========================================= */
+.records-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.controls-bar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.controls-bar input,
+.controls-bar select {
+  width: auto;
+  min-width: 190px;
+}
+
+.table-container {
+  overflow-x: auto;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+th, td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+tbody tr:hover {
+  background-color: #faf6f0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.empty-msg {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Performance Badges */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.perf-excellent { background-color: var(--success-bg); color: var(--success-text); }
+.perf-very-good { background-color: var(--info-bg); color: var(--info-text); }
+.perf-good      { background-color: #e0e7ff; color: #3730a3; }
+.perf-average   { background-color: var(--warning-bg); color: var(--warning-text); }
+.perf-failed    { background-color: var(--danger-bg); color: var(--danger-text); }
+
+/* =========================================
+   7. About, Courses & Contact Page Extras
+   ========================================= */
+.value-card, .team-card {
+  text-align: center;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin: 0 auto 0.85rem;
+}
+
+.role {
+  color: #7a5441;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course-card .badge {
+  align-self: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.level-beginner     { background-color: var(--success-bg); color: var(--success-text); }
+.level-intermediate { background-color: var(--info-bg); color: var(--info-text); }
+.level-advanced     { background-color: var(--warning-bg); color: var(--warning-text); }
+
+.course-meta {
+  list-style: none;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.contact-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-info-column p {
+  margin-bottom: 0.65rem;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.social-pill {
+  background-color: #f3ebd9;
+  color: var(--primary-color);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.social-pill:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.map-placeholder {
+  background: linear-gradient(135deg, #e5d9c5, #d8c9b4);
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 2px dashed #b5a289;
+}
+
+.map-tag {
+  display: inline-block;
+  margin-top: 0.75rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* =========================================
+   8. Footer
+   ========================================= */
+.site-footer {
+  background-color: #21130c;
+  color: #F2E8DA;
+  padding-top: 2.5rem;
+  margin-top: auto;
+}
+
+.site-footer h3, .site-footer h4 {
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer-grid ul {
+  list-style: none;
+}
+
+.footer-grid li {
+  margin-bottom: 0.4rem;
+}
+
+.footer-grid a:hover {
+  color: var(--accent-color);
+}
+
+.footer-bottom {
+  background-color: #120905;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.88rem;
+}
+
+/* =========================================
+   9. Responsive Media Queries
+   ========================================= */
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .courses-grid, .three-col-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    padding: 1rem 4%;
+    border-top: 1px solid rgba(242, 232, 218, 0.2);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .stats-grid,
+  .two-col-grid,
+  .three-col-grid,
+  .courses-grid,
+  .form-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .controls-bar input,
+  .controls-bar select,
+  .controls-bar button {
+    width: 100%;
+  }
+}

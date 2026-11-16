@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Media School of Kenya | Student Management Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Shared Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">The Media School <span>of Kenya</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="courses.html">Courses</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Student Management Portal</h1>
+      <p>Equip Talent, Shape Tomorrow through world-class technical education — Register learners, track performance, and manage records seamlessly.</p>
+      <a href="#registerSection" class="btn btn-primary">Register a Student</a>
+    </div>
+  </section>
+
+  <main class="container main-content">
+    <!-- Section 1: Dashboard Statistics -->
+    <section class="section">
+      <h2 class="section-title">Dashboard Overview</h2>
+      <div class="stats-grid">
+        <div class="card stat-card">
+          <h3>Total Students</h3>
+          <p class="stat-number" id="totalStudents">0</p>
+        </div>
+        <div class="card stat-card">
+          <h3>Students Passed</h3>
+          <p class="stat-number text-success" id="passedStudents">0</p>
+        </div>
+        <div class="card stat-card">
+          <h3>Students Failed</h3>
+          <p class="stat-number text-danger" id="failedStudents">0</p>
+        </div>
+        <div class="card stat-card">
+          <h3>Average Marks</h3>
+          <p class="stat-number" id="averageMarks">0%</p>
+        </div>
+      </div>
+
+      <!-- Performance Summary (Bonus: Highest & Lowest Scorers) -->
+      <div class="summary-bar card">
+        <div>
+          <strong>Highest Performer:</strong> <span id="highestStudent">N/A</span>
+        </div>
+        <div>
+          <strong>Lowest Performer:</strong> <span id="lowestStudent">N/A</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Student Registration Form -->
+    <section class="section" id="registerSection">
+      <h2 class="section-title">Register New Student</h2>
+      <div class="card form-card">
+        <form id="studentForm" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="studentName">Full Name *</label>
+              <input type="text" id="studentName" placeholder="e.g., Mary Wanjiku" required />
+            </div>
+
+            <div class="form-group">
+              <label for="studentAge">Age *</label>
+              <input type="number" id="studentAge" placeholder="e.g., 21" min="15" max="100" required />
+            </div>
+
+            <div class="form-group">
+              <label for="studentGender">Gender *</label>
+              <select id="studentGender" required>
+                <option value="">-- Select Gender --</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="studentCourse">Course *</label>
+              <select id="studentCourse" required>
+                <option value="">-- Select Course --</option>
+                <option value="Broadcast">Broadcast</option>
+                <option value="Web Design">Web Design</option>
+                <option value="Video Editing">Video Editing</option>
+                <option value="Print Journalism">Print Journalism</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Media Technology">Media Technology</option>
+                <option value="Mass Communication">Mass Communication</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="studentMarks">Marks (0 - 100) *</label>
+              <input type="number" id="studentMarks" placeholder="e.g., 85" min="0" max="100" required />
+            </div>
+          </div>
+
+          <div id="formMessage" class="feedback-msg"></div>
+          <button type="submit" class="btn btn-primary">Register Student</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Section 3 & 4: Search, Filter, Sort & Student Records Table -->
+    <section class="section">
+      <div class="records-header">
+        <h2 class="section-title">Registered Student Records</h2>
+        <div class="controls-bar">
+          <input type="text" id="searchInput" placeholder="Search by student name..." />
+          <select id="courseFilter">
+            <option value="All">All Courses</option>
+            <option value="Broadcast">Broadcast</option>
+            <option value="Web Design">Web Design</option>
+            <option value="Video Editing">Video Editing</option>
+            <option value="Print Journalism">Print Journalism</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Media Technology">Media Technology</option>
+            <option value="Mass Communication">Mass Communication</option>
+          </select>
+          <button type="button" id="sortMarksBtn" class="btn btn-secondary">Sort by Marks (High &rarr; Low)</button>
+          <button type="button" id="clearAllBtn" class="btn btn-danger">Clear All</button>
+        </div>
+      </div>
+
+      <div class="card table-container">
+        <table id="studentTable">
+          <thead>
+            <tr>
+              <th>Full Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Course</th>
+              <th>Marks</th>
+              <th>Performance</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody">
+            <!-- Populated dynamically by JavaScript -->
+          </tbody>
+        </table>
+        <p id="noRecordsMessage" class="empty-msg hidden">No matching student records found.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>The Media School of Kenya</h3>
+        <p>Equip Talent, Shape Tomorrow through world-class technical education.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home / Dashboard</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="courses.html">Courses Offered</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <p>Nairobi, Kenya</p>
+        <p>info@mediaschoolkenya.ac.ke</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Media School of Kenya. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
